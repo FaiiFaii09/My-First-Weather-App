@@ -1,0 +1,57 @@
+h2 {
+  color: blueviolet;
+  text-align: center;
+  font-family: "Red Rose", cursive;
+  font-weight: bolder;
+}
+
+h4 {
+  margin-left: 30px;
+  font-family: "Red Rose", cursive;
+  font-weight: bolder;
+}
+.date {
+  font-weight: bolder;
+}
+.location {
+  margin-top: 30px;
+}
+.col-4 {
+  text-align: center;
+  font-size: 18px;
+  font-family: "Red Rose", cursive;
+}
+.temperature {
+  margin-top: 20px;
+}
+.temperature-value {
+  font-size: 50px;
+}
+.card {
+  font-family: "Red Rose", cursive;
+}
+.card-title {
+  text-align: center;
+}
+.card-img-top {
+  width: 80%;
+}
+.card-img-bottom {
+  width: 50%;
+  display: block;
+  margin: 0 auto;
+}
+.card-text {
+  text-align: center;
+  margin-top: 25px;
+}
+.high {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+#signature {
+  text-align: center;
+  font-size: 10px;
+  font-family: "Red Rose", cursive;
+}

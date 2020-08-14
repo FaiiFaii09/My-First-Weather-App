@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <title>Faii-Weather-App</title>
+    <meta charset="UTF-8" />
+    <link href="src/styles.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Red+Rose:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous" />
+    <script src="https://kit.fontawesome.com/d8954b036e.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="location">
+            <form id="search-form">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Enter Location (city, state, country)"
+                        autocomplete="off" id="search-location" />
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="submit">
+                            Search
+                        </button>
+                        <input class="btn btn-primary" type="reset" value="Reset">
+                    </div>
+                    <button type="submit" class="btn btn-info" id="current-location-button"><i
+                            class="fas fa-map-marker-alt"></i></button>
+                </div>
+        </div>
+        </form>
+        <div class="border p-3 rounded">
+            <div class="row justify-content-between">
+                <div class="col-4">
+                    Local Date
+                    <h4>
+                        <span class="day">
+                        </span>
+                        <br />
+                        <span class="date">
+                        </span>
+                    </h4>
+                </div>
+                <div class="col-4" id="time">
+                    Local Time
+                    <h3>
+                    </h3>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-4">
+                    <h2>
+                        Location
+                    </h2>
+                    <div class="temperature">
+                        <span class="temperature-value">
+                            --
+                        </span>
+                        <p class="feel-like">
+                            Feels like
+                        </p>
+                        <div class="btn-group btn-group-toggle" data-toggle="buttons">
+
+                            <label class="btn btn-secondary active">
+                                <input type="radio" name="options" id="fah" checked> °F
+                            </label>
+                            <label class="btn btn-secondary">
+                                <input type="radio" name="options" id="cel"> °C
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="row justify-content-between">
+                <div class="col-4">
+                    <span id="high">
+                        High ↑--
+                    </span>
+                    <br />
+                    <span id="low">
+                        Low ↓--
+                    </span>
+                    <br />
+                    <span id="humidity">
+                        Humidity 💦 --%
+                    </span>
+                </div>
+                <div class="col-4">
+                    <span id="sunrise">
+                        Sunrise
+                    </span>
+                    <br />
+                    <span id="sunset">
+                        Sunset
+                    </span>
+                    <br />
+                    <span>
+                        Chance of Rain
+                    </span>
+                </div>
+            </div>
+        </div>
+        <br />
+        <div class="card-deck">
+            <div class="card">
+                <h5 class="card-title">Sun</h5>
+                <div class="card-body">
+                    <img src="images/partly-cloudy.png" class="card-img-bottom" alt="sunny" />
+                    <p class="card-text">
+                        <span class="high" id="mon-high">
+                            75
+                        </span id="mon-low">
+                        / 58
+                    </p>
+                </div>
+            </div>
+            <div class="card">
+                <h5 class="card-title">Mon</h5>
+                <div class="card-body">
+                    <img src="images/partly-cloudy.png" class="card-img-bottom" alt="sunny" />
+                    <p class="card-text">
+                        <span class="high">
+                            75
+                        </span>
+                        / 58
+                    </p>
+                </div>
+            </div>
+            <div class="card">
+                <h5 class="card-title">Tue</h5>
+                <div class="card-body">
+                    <img src="images/sunny.jpg" class="card-img-bottom" alt="sunny" />
+                    <p class="card-text">
+                        <span class="high">
+                            71
+                        </span>
+                        / 58
+                        </span>
+                    </p>
+                </div>
+            </div>
+            <div class="card">
+                <h5 class="card-title">Wed</h5>
+                <div class="card-body">
+                    <img src="images/partly-cloudy.png" class="card-img-bottom" alt="sunny" />
+                    <p class="card-text">
+                        <span class="high">
+                            69
+                        </span>
+                        / 57
+                    </p>
+                </div>
+            </div>
+            <div class="card">
+                <h5 class="card-title">Thur</h5>
+                <div class="card-body">
+                    <img src="images/partly-cloudy.png" class="card-img-bottom" alt="sunny" />
+                    <p class="card-text">
+                        <span class="high">
+                            69
+                        </span>
+                        / 57
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br />
+    <p id="signature">
+        Coded by Faii Athiprayoon
+    </p>
+    <script src="src/index.js"></script>
+</body>
+
+</html>
