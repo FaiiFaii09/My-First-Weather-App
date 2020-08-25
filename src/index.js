@@ -122,6 +122,14 @@ function displayTemperature(response) {
 
   let timeElement = document.querySelector("#time");
   timeElement.innerHTML = formatHours(response.data.dt * 1000);
+
+  let iconElement = document.querySelector("#icon");
+  iconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+
+  iconElement.setAttribute("alt", response.data.weather[0].description);
 }
 
 //let h4 = document.querySelector("h3");
