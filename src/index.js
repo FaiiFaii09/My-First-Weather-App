@@ -1,45 +1,51 @@
 // Part1: Display Date & Time
-let now = new Date();
-let h4 = document.querySelector("h4");
-let h3 = document.querySelector("h3");
-let currentDate = now.getDate();
-let currentYear = now.getFullYear();
-let days = [
-  "Sunday",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-];
-let currentDay = days[now.getDay()];
-let months = [
-  "January",
-  "February",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "August",
-  "September",
-  "October",
-  "November",
-  "December",
-];
-let currentMonth = months[now.getMonth()];
-let currentHour = now.getHours();
-if (currentHour < 10) {
-  currentHour = `0${currentHour}`;
-}
-let currentMinute = now.getMinutes();
-if (currentMinute < 10) {
-  currentMinute = `0${currentMinute}`;
+function formatDate(timestamp) {
+  let now = new Date(timestamp);
+
+  let currentDate = now.getDate();
+  let currentYear = now.getFullYear();
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  let currentDay = days[now.getDay()];
+  let months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+  let currentMonth = months[now.getMonth()];
+  return `${currentDay}, ${currentMonth} ${currentDate}, ${currentYear}`;
 }
 
-h4.innerHTML = `${currentDay}, ${currentMonth} ${currentDate}, ${currentYear}`;
-h3.innerHTML = `${currentHour}: ${currentMinute}`;
+function formatHours(timestamp) {
+  let now = new Date(timestamp);
+  let currentHour = now.getHours();
+
+  if (currentHour < 10) {
+    currentHour = `0${currentHour}`;
+  }
+  let currentMinute = now.getMinutes();
+  if (currentMinute < 10) {
+    currentMinute = `0${currentMinute}`;
+  }
+
+  return `${currentHour}: ${currentMinute}`;
+}
 
 // Part2: Add search engine
 
@@ -78,9 +84,14 @@ currentLocationButton.addEventListener("click", getCurrentPosition);
 
 // Display Temperature & others
 function displayTemperature(response) {
+  console.log(response.data);
   let location = response.data.name;
   let locationName = document.querySelector("h2");
   locationName.innerHTML = `${location}`;
+
+  let description = response.data.weather[0].description;
+  let descriptionElement = document.querySelector("#description");
+  descriptionElement.innerHTML = `${description}`;
 
   let temperature = Math.round(response.data.main.temp);
   let currentTemp = document.querySelector(".temperature-value");
@@ -100,8 +111,23 @@ function displayTemperature(response) {
 
   let humidity = response.data.main.humidity;
   let humidityPercentage = document.querySelector("#humidity");
-  humidityPercentage.innerHTML = `Humidity 💦  ${humidity}%`;
+  humidityPercentage.innerHTML = `Humidity 💦   ${humidity}%`;
+
+  let wind = Math.round(response.data.wind.speed);
+  let windSpeed = document.querySelector("#wind-speed");
+  windSpeed.innerHTML = `Wind 🌬  ${wind} km/h`;
+
+  let dateElement = document.querySelector("#date");
+  dateElement.innerHTML = formatDate(response.data.dt * 1000);
+
+  let timeElement = document.querySelector("#time");
+  timeElement.innerHTML = formatHours(response.data.dt * 1000);
 }
+
+//let h4 = document.querySelector("h3");
+//h3.innerHTML = `${currentHour}: ${currentMinute}`;
+//let h4 = document.querySelector("h4");
+//h4.innerHTML = `${currentDay}, ${currentMonth} ${currentDate}, ${currentYear}`;
 
 //let celsius = Math.round(temperature);
 

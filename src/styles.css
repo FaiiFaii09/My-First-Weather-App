@@ -55,3 +55,7 @@ h4 {
   font-size: 10px;
   font-family: "Red Rose", cursive;
 }
+
+#description {
+  text-transform: capitalize;
+}

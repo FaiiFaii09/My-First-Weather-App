@@ -2,13 +2,13 @@
 <html>
 
 <head>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <title>Faii-Weather-App</title>
     <meta charset="UTF-8" />
     <link href="https://fonts.googleapis.com/css2?family=Red+Rose:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
         integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous" />
     <script src="https://kit.fontawesome.com/d8954b036e.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <link rel="stylesheet" href="src/styles.css" />
 </head>
 
@@ -33,8 +33,8 @@
         <div class="border p-3 rounded">
             <div class="row justify-content-between">
                 <div class="col-4">
-                    Local Date
-                    <h4>
+                    TODAY
+                    <h4 id="date">
                         <span class="day">
                         </span>
                         <br />
@@ -42,9 +42,10 @@
                         </span>
                     </h4>
                 </div>
-                <div class="col-4" id="time">
-                    Local Time
-                    <h3>
+                <div class="col-4">
+                    Last Updated:
+                    <h3 id="time">
+                        --:--
                     </h3>
                 </div>
             </div>
@@ -53,7 +54,7 @@
                     <h2>
                         Location
                     </h2>
-                    <div class="description">
+                    <div id="description">
                     ---
                     </div>
                     <div class="image">
@@ -88,26 +89,18 @@
                     <span id="low">
                         Low ↓--
                     </span>
-                    <br />
+                    
+                </div>
+                <div class="col-4">
                     <span id="humidity">
                         Humidity 💦 --%
                     </span>
-                </div>
-                <div class="col-4">
-                    <span id="sunrise">
-                        Sunrise
-                    </span>
                     <br />
-                    <span id="sunset">
-                        Sunset
-                    </span>
-                    <br />
-                    <span>
-                        Wind
+                    <span id="wind-speed">
+                        Wind 🌬 --
                     </span>
                 </div>
             </div>
-        </div>
         <br />
         <div class="card-deck">
             <div class="card">
@@ -172,6 +165,7 @@
                 </div>
             </div>
         </div>
+    </div>
     </div>
     <br />
     <p id="signature">
