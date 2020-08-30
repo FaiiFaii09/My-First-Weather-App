@@ -14,6 +14,7 @@
 
 <body>
     <div class="container">
+        <div class ="weather-app">
         <div class="location">
             <form id="search-form">
                 <div class="input-group mb-3">
@@ -51,15 +52,13 @@
             </div>
             <div class="row justify-content-center">
                 <div class="col-4">
-                    <h2>
+                    <h2 id="city">
                         Location
                     </h2>
                     <div id="description">
                     ---
                     </div>
-                    <div class="image">
                     <img src="images/sunny.jpg" class="card-img-bottom" id="icon" />
-                    </div>
                     <div class="temperature">
                         <span class="temperature-value">
                             --
@@ -67,14 +66,15 @@
                         <p class="feel-like">
                             Feels like
                         </p>
-                        <div class="btn-group btn-group-toggle" data-toggle="buttons">
-
-                            <label class="btn btn-secondary active">
-                                <input type="radio" name="options" id="fah" checked> °F
-                            </label>
-                            <label class="btn btn-secondary">
-                                <input type="radio" name="options" id="cel"> °C
-                            </label>
+                        <div class ="temperature-converter" >
+                            <span  id="fah">
+                                 <a href="#" id="fahrenheit-link"> °F 
+                                </a> |
+                            </span>
+                            <span id="cel">
+                                 <a href="#" id="celsuis-link">  °C
+                                </a>
+                            </span>
                         </div>
                     </div>
                 </div>
@@ -111,7 +111,7 @@
                         <span class="high" id="mon-high">
                             75
                         </span id="mon-low">
-                        / 58
+                         58
                     </p>
                 </div>
             </div>
@@ -123,7 +123,7 @@
                         <span class="high">
                             75
                         </span>
-                        / 58
+                         58
                     </p>
                 </div>
             </div>
@@ -135,8 +135,8 @@
                         <span class="high">
                             71
                         </span>
-                        / 58
-                        </span>
+                        <br />
+                          58
                     </p>
                 </div>
             </div>
@@ -148,7 +148,7 @@
                         <span class="high">
                             69
                         </span>
-                        / 57
+                         57
                     </p>
                 </div>
             </div>
@@ -160,14 +160,14 @@
                         <span class="high">
                             69
                         </span>
-                        / 57
+                         57
                     </p>
                 </div>
             </div>
         </div>
     </div>
     </div>
-    <br />
+    </div>
     <p id="signature">
         <span> 
             <a href="https://github.com/FaiiFaii09/My-First-Weather-App" target="_blank">
