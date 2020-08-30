@@ -56,24 +56,22 @@
                         Location
                     </h2>
                     <div id="description">
-                    ---
+                        ---
                     </div>
-                    <img src="images/sunny.jpg" class="card-img-bottom" id="icon" />
+                    <img src="#" class="card-img-bottom" id="icon" />
                     <div class="temperature">
                         <span class="temperature-value">
                             --
                         </span>
+                        <span id="unit">ºC</span>
                         <p class="feel-like">
                             Feels like
                         </p>
                         <div>
-                            <span id="fah">
-                                <a href="#" id="fahrenheit-link"> °F
-                                </a> |
-                            </span>
-                            <span id="cel">
-                                <a href="#" id="celsius-link"> °C
-                                </a>
+                            <a href="#" id="fahrenheit-link"> °F
+                            </a> |
+                            <a href="#" id="celsius-link"> °C
+                            </a>
                             </span>
                         </div>
                     </div>
@@ -82,11 +80,11 @@
             <br />
             <div class="row justify-content-between">
                 <div class="col-4">
-                    <span id="high">
+                    <span id="max">
                         High ↑--
                     </span>
                     <br />
-                    <span id="low">
+                    <span id="min">
                         Low ↓--
                     </span>
                     
@@ -102,68 +100,8 @@
                 </div>
             </div>
         <br />
-        <div class="card-deck">
-            <div class="card">
-                <h5 class="card-title">Sun</h5>
-                <div class="card-body">
-                    <img src="images/partly-cloudy.png" class="card-img-bottom" alt="sunny" />
-                    <p class="card-text">
-                        <span class="high" id="mon-high">
-                            75
-                        </span id="mon-low">
-                         58
-                    </p>
-                </div>
-            </div>
-            <div class="card">
-                <h5 class="card-title">Mon</h5>
-                <div class="card-body">
-                    <img src="images/partly-cloudy.png" class="card-img-bottom" alt="sunny" />
-                    <p class="card-text">
-                        <span class="high">
-                            75
-                        </span>
-                         58
-                    </p>
-                </div>
-            </div>
-            <div class="card">
-                <h5 class="card-title">Tue</h5>
-                <div class="card-body">
-                    <img src="images/sunny.jpg" class="card-img-bottom" alt="sunny" />
-                    <p class="card-text">
-                        <span class="high">
-                            71
-                        </span>
-                        <br />
-                          58
-                    </p>
-                </div>
-            </div>
-            <div class="card">
-                <h5 class="card-title">Wed</h5>
-                <div class="card-body">
-                    <img src="images/partly-cloudy.png" class="card-img-bottom" alt="sunny" />
-                    <p class="card-text">
-                        <span class="high">
-                            69
-                        </span>
-                         57
-                    </p>
-                </div>
-            </div>
-            <div class="card">
-                <h5 class="card-title">Thur</h5>
-                <div class="card-body">
-                    <img src="images/partly-cloudy.png" class="card-img-bottom" alt="sunny" />
-                    <p class="card-text">
-                        <span class="high">
-                            69
-                        </span>
-                         57
-                    </p>
-                </div>
-            </div>
+        <div class="card-deck" id="forecast">
+            
         </div>
     </div>
     </div>

@@ -34,17 +34,17 @@ function formatDate(timestamp) {
 
 function formatHours(timestamp) {
   let now = new Date(timestamp);
-  let currentHour = now.getHours();
+  let hours = now.getHours();
 
-  if (currentHour < 10) {
-    currentHour = `0${currentHour}`;
+  if (hours < 10) {
+    hours = `0${hours}`;
   }
-  let currentMinute = now.getMinutes();
-  if (currentMinute < 10) {
-    currentMinute = `0${currentMinute}`;
+  let minutes = now.getMinutes();
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
   }
 
-  return `${currentHour}: ${currentMinute}`;
+  return `${hours}: ${minutes}`;
 }
 
 // Display Temperature & others
@@ -60,19 +60,19 @@ function displayCurrentWeather(response) {
 
   let temperature = Math.round(response.data.main.temp);
   let currentTemp = document.querySelector(".temperature-value");
-  currentTemp.innerHTML = `${temperature}°C`;
+  currentTemp.innerHTML = `${temperature}`;
 
   let feelLike = Math.round(response.data.main.feels_like);
   let feelLikeTemp = document.querySelector(".feel-like");
-  feelLikeTemp.innerHTML = `Feels like ${feelLike}°C`;
+  feelLikeTemp.innerHTML = `Feels like ${feelLike}ºC`;
 
   let max = Math.round(response.data.main.temp_max);
-  let maxTemp = document.querySelector("#high");
-  maxTemp.innerHTML = `High ↑ ${max}°C`;
+  let maxTemp = document.querySelector("#max");
+  maxTemp.innerHTML = `High ↑ ${max} ºC`;
 
   let min = Math.round(response.data.main.temp_min);
-  let minTemp = document.querySelector("#low");
-  minTemp.innerHTML = `Low ↓ ${min}°C`;
+  let minTemp = document.querySelector("#min");
+  minTemp.innerHTML = `Low ↓ ${min} ºC`;
 
   let humidity = response.data.main.humidity;
   let humidityPercentage = document.querySelector("#humidity");
@@ -100,7 +100,30 @@ function displayCurrentWeather(response) {
 }
 
 function displayForecast(response) {
-  console.log(response.data);
+  console.log();
+  let forecastElement = document.querySelector("#forecast");
+  forecastElement.innerHTML = null;
+  let forecast = null;
+
+  for (let index = 0; index < 6; index++) {
+    forecast = response.data.list[index];
+    forecastElement.innerHTML = forecastElement.innerHTML += `<div class="card">
+                <h6 class="card-title"> ${formatHours(forecast.dt * 1000)}</h6>
+                <div class="card-body">
+                    <img src="http://openweathermap.org/img/wn/${
+                      forecast.weather[0].icon
+                    }@2x.png" class="card-img-bottom"/>
+                    <p class="card-text">
+                        <strong id="high">
+                            ${Math.round(forecast.main.temp_max)}º
+                        </strong>
+                        <span id="low">
+                           ${Math.round(forecast.main.temp_min)}º
+                          </span> 
+                    </p>
+                </div>
+            </div>`;
+  }
 }
 
 // Search User's Current Position
@@ -146,25 +169,57 @@ form.addEventListener("submit", searchLocation);
 // Unit Converter
 function convertToFahrenheitTemp(event) {
   event.preventDefault();
-  let temperatureElement = document.querySelector("#temperature-value");
+  let temperatureElement = document.querySelector(".temperature-value");
+  let unitElement = document.querySelector("#unit");
+  let maxElement = document.querySelector("#max");
+  let minElement = document.querySelector("#min");
+  let feelLikeElement = document.querySelector(".feel-like");
   celsiusLink.classList.remove("active");
   fahrenheitLink.classList.add("active");
   let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
   temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
+  unitElement.innerHTML = "ºF";
+  maxElement.innerHTML = `High ↑ ${Math.round(fahrenheitTemperature)}ºF`;
+  minElement.innerHTML = `Low ↓ ${Math.round(fahrenheitTemperature)}ºF`;
+  feelLikeElement.innerHTML = `Feels like ${Math.round(
+    fahrenheitTemperature
+  )}ºF`;
+
+  // convert units in the hourly forecast portion
+  let highElement = document.querySelector("#high");
+  let lowElement = document.querySelector("#low");
+  highElement.innerHTML = `${Math.round(fahrenheitTemperature)}º`;
+  lowElement.innerHTML = `${Math.round(fahrenheitTemperature)}º`;
 }
 
 function convertToCelsiusTemp(event) {
   event.preventDefault();
   celsiusLink.classList.add("active");
   fahrenheitLink.classList.remove("active");
-  let temperatureElement = document.querySelector("#temperature-value");
+  let temperatureElement = document.querySelector(".temperature-value");
+  let unitElement = document.querySelector("#unit");
+  let maxElement = document.querySelector("#max");
+  let minElement = document.querySelector("#min");
+  let feelLikeTemp = document.querySelector(".feel-like");
   temperatureElement.innerHTML = Math.round(celsiusTemperature);
+  unitElement.innerHTML = "ºC";
+  maxElement.innerHTML = `High ↑ ${Math.round(celsiusTemperature)}ºC`;
+  minElement.innerHTML = `Low ↓ ${Math.round(celsiusTemperature)}ºC`;
+  feelLikeTemp.innerHTML = `Feels like ${Math.round(celsiusTemperature)}ºC`;
+
+  // convert units in the hourly forecast portion
+  let highElement = document.querySelector("#high");
+  let lowElement = document.querySelector("#low");
+  highElement.innerHTML = `${Math.round(celsiusTemperature)}º`;
+  lowElement.innerHTML = `${Math.round(celsiusTemperature)}º`;
 }
 
-let celsiusTemp = null;
+let celsiusTemperature = null;
 
 let fahrenheitLink = document.querySelector("#fahrenheit-link");
 fahrenheitLink.addEventListener("click", convertToFahrenheitTemp);
 
 let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", convertToCelsiusTemp);
+
+locationSearch("Bangkok");
