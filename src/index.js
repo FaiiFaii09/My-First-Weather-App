@@ -96,8 +96,13 @@ function displayCurrentWeather(response) {
 
   iconElement.setAttribute("alt", response.data.weather[0].description);
 
-  celsiusTemp = response.data.main.temp;
+  celsiusTemperature = response.data.main.temp;
 }
+
+function displayForecast(response) {
+  console.log(response.data);
+}
+
 // Search User's Current Position
 function myLocation(position) {
   console.log(position);
@@ -129,8 +134,11 @@ function searchLocation(event) {
 function locationSearch(city) {
   let apiKey = "751f58f905d4f428f0ffbf70ca07ab69";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-
   axios.get(apiUrl).then(displayCurrentWeather);
+
+  // Add API Forecast
+  apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayForecast);
 }
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", searchLocation);
@@ -141,8 +149,8 @@ function convertToFahrenheitTemp(event) {
   let temperatureElement = document.querySelector("#temperature-value");
   celsiusLink.classList.remove("active");
   fahrenheitLink.classList.add("active");
-  let fahrenheitTemp = (celsiusTemp * 9) / 5 + 32;
-  temperatureElement.innerHTML = Math.round(fahrenheitTemp);
+  let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
+  temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
 }
 
 function convertToCelsiusTemp(event) {
@@ -150,7 +158,7 @@ function convertToCelsiusTemp(event) {
   celsiusLink.classList.add("active");
   fahrenheitLink.classList.remove("active");
   let temperatureElement = document.querySelector("#temperature-value");
-  temperatureElement.innerHTML = Math.round(celsiusTemp);
+  temperatureElement.innerHTML = Math.round(celsiusTemperature);
 }
 
 let celsiusTemp = null;
@@ -160,5 +168,3 @@ fahrenheitLink.addEventListener("click", convertToFahrenheitTemp);
 
 let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", convertToCelsiusTemp);
-
-locationSearch("Solvang, USA");
