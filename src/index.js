@@ -98,7 +98,7 @@ function displayCurrentWeather(response) {
 
   celsiusTemperature = response.data.main.temp;
 }
-
+// Hourly forecast
 function displayForecast(response) {
   console.log();
   let forecastElement = document.querySelector("#forecast");
@@ -114,11 +114,11 @@ function displayForecast(response) {
                       forecast.weather[0].icon
                     }@2x.png" class="card-img-bottom"/>
                     <p class="card-text">
-                        <strong id="high">
-                            ${Math.round(forecast.main.temp_max)}º
+                        <strong class="forecast-high">
+                             ${Math.round(forecast.main.temp_max)}º
                         </strong>
-                        <span id="low">
-                           ${Math.round(forecast.main.temp_min)}º
+                        <span class="forecast-low">
+                             ${Math.round(forecast.main.temp_min)}º
                           </span> 
                     </p>
                 </div>
@@ -185,11 +185,18 @@ function convertToFahrenheitTemp(event) {
     fahrenheitTemperature
   )}ºF`;
 
-  // convert units in the hourly forecast portion
-  let highElement = document.querySelector("#high");
-  let lowElement = document.querySelector("#low");
-  highElement.innerHTML = `${Math.round(fahrenheitTemperature)}º`;
-  lowElement.innerHTML = `${Math.round(fahrenheitTemperature)}º`;
+  // convert to Fahrenheit in the hourly forecast portion
+  let highElement = document.querySelectorAll(".forecast-high");
+  let lowElement = document.querySelectorAll(".forecast-low");
+  highElement.forEach(function (high) {
+    let currentTemp = high.innerHTML;
+    high.innerHTML = `${Math.round((currentTemp * 9) / 5 + 32)}`;
+  });
+
+  lowElement.forEach(function (low) {
+    let currentTemp = low.innerHTML;
+    low.innerHTML = `${Math.round((currentTemp * 9) / 5 + 32)}`;
+  });
 }
 
 function convertToCelsiusTemp(event) {
@@ -207,11 +214,18 @@ function convertToCelsiusTemp(event) {
   minElement.innerHTML = `Low ↓ ${Math.round(celsiusTemperature)}ºC`;
   feelLikeTemp.innerHTML = `Feels like ${Math.round(celsiusTemperature)}ºC`;
 
-  // convert units in the hourly forecast portion
-  let highElement = document.querySelector("#high");
-  let lowElement = document.querySelector("#low");
-  highElement.innerHTML = `${Math.round(celsiusTemperature)}º`;
-  lowElement.innerHTML = `${Math.round(celsiusTemperature)}º`;
+  // convert to Celsius in the hourly forecast portion
+  let highElement = document.querySelectorAll(".forecast-high");
+  let lowElement = document.querySelectorAll(".forecast-low");
+  highElement.forEach(function (high) {
+    let currentTemp = high.innerHTML;
+    high.innerHTML = `${Math.round(((currentTemp - 32) * 5) / 9)}`;
+  });
+
+  lowElement.forEach(function (low) {
+    let currentTemp = low.innerHTML;
+    low.innerHTML = `${Math.round(((currentTemp - 32) * 5) / 9)}`;
+  });
 }
 
 let celsiusTemperature = null;

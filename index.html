@@ -18,10 +18,10 @@
         <div class="location">
             <form id="search-form">
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Enter Location (city, state, country)"
+                    <input type="text" class="form-control" placeholder="Enter Location (city)"
                         autocomplete="off" id="search-location" />
                     <div class="input-group-append">
-                        <button class="btn btn-outline-secondary" type="submit">
+                        <button class="btn btn-outline-secondary" type="submit" id="search-button">
                             Search
                         </button>
                         <input class="btn btn-primary" type="reset" value="Reset">
@@ -52,9 +52,9 @@
             </div>
             <div class="row justify-content-center">
                 <div class="col-4">
-                    <h2 id="city">
+                    <h1 id="city">
                         Location
-                    </h2>
+                    </h1>
                     <div id="description">
                         ---
                     </div>
@@ -67,7 +67,7 @@
                         <p class="feel-like">
                             Feels like
                         </p>
-                        <div>
+                        <div class="unit-converter">
                             <a href="#" id="fahrenheit-link"> °F
                             </a> |
                             <a href="#" id="celsius-link"> °C
@@ -106,13 +106,13 @@
     </div>
     </div>
     </div>
-    <p id="signature">
+    <div id="signature">
         <span> 
             <a href="https://github.com/FaiiFaii09/My-First-Weather-App" target="_blank">
            Open-source Code </a>,
         </span>
         by Faii Athiprayoon
-    </p>
+    </div>
     <script src="src/index.js"></script>
 </body>
 
