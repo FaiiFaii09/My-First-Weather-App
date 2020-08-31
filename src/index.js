@@ -1,4 +1,4 @@
-// Part1: Display Date & Time
+//  Display Date & Time
 function formatDate(timestamp) {
   let now = new Date(timestamp);
 
@@ -132,9 +132,6 @@ function displayForecast(response) {
                 </div>
             </div>`;
   }
-
-  maxForecast = forecast.main.temp_max;
-  minForecast = forecast.main.temp_min;
 }
 
 // Search User's Current Position
