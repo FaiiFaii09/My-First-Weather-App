@@ -184,6 +184,11 @@ function convertToFahrenheitTemp(event) {
   let feelLikeElement = document.querySelector(".feel-like");
   celsiusLink.classList.remove("active");
   fahrenheitLink.classList.add("active");
+
+  //Remove the Fahrenheit event and add the celsius event (Still doesn't work)
+  celsiusLink.addEventListener("click", convertToCelsiusTemp);
+  fahrenheitLink.removeEventListener("click", convertToFahrenheitTemp);
+
   let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
   temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
   unitElement.innerHTML = "ºF";
@@ -217,11 +222,16 @@ function convertToCelsiusTemp(event) {
   event.preventDefault();
   celsiusLink.classList.add("active");
   fahrenheitLink.classList.remove("active");
+  //Remove the celsius event and add the fahrenheit event (Still doesn't work)
+  celsiusLink.removeEventListener("click", convertToCelsiusTemp);
+  fahrenheitLink.addEventListener("click", convertToFahrenheitTemp);
+
   let temperatureElement = document.querySelector(".temperature-value");
   let unitElement = document.querySelector("#unit");
   let maxElement = document.querySelector("#max");
   let minElement = document.querySelector("#min");
   let feelLikeElement = document.querySelector(".feel-like");
+
   temperatureElement.innerHTML = Math.round(celsiusTemperature);
   unitElement.innerHTML = "ºC";
   maxElement.innerHTML = `High ↑ ${Math.round(maxTemperature)}ºC`;
@@ -243,10 +253,8 @@ function convertToCelsiusTemp(event) {
 }
 
 let celsiusTemperature = null;
-
 let fahrenheitLink = document.querySelector("#fahrenheit-link");
 fahrenheitLink.addEventListener("click", convertToFahrenheitTemp);
-
 let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", convertToCelsiusTemp);
 
