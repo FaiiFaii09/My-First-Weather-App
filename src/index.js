@@ -185,7 +185,7 @@ function convertToFahrenheitTemp(event) {
   celsiusLink.classList.remove("active");
   fahrenheitLink.classList.add("active");
 
-  //Remove the Fahrenheit event and add the celsius event (Still doesn't work)
+  //Remove the Fahrenheit event and add the celsius event
   celsiusLink.addEventListener("click", convertToCelsiusTemp);
   fahrenheitLink.removeEventListener("click", convertToFahrenheitTemp);
 
@@ -222,7 +222,7 @@ function convertToCelsiusTemp(event) {
   event.preventDefault();
   celsiusLink.classList.add("active");
   fahrenheitLink.classList.remove("active");
-  //Remove the celsius event and add the fahrenheit event (Still doesn't work)
+  //Remove the celsius event and add the fahrenheit event
   celsiusLink.removeEventListener("click", convertToCelsiusTemp);
   fahrenheitLink.addEventListener("click", convertToFahrenheitTemp);
 
