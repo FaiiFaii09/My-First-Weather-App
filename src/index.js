@@ -144,7 +144,7 @@ function myLocation(position) {
 
   axios.get(apiUrl).then(displayCurrentWeather);
   // Add API Forecast
-  let apiUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${currentLat}&lon=${currentLon}&appid=${apiKey}&units=metric`;
+  apiUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${currentLat}&lon=${currentLon}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayForecast);
 }
 
