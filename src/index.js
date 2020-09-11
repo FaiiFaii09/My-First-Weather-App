@@ -91,7 +91,7 @@ function displayCurrentWeather(response) {
   let iconElement = document.querySelector("#icon");
   iconElement.setAttribute(
     "src",
-    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+    `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
 
   iconElement.setAttribute("alt", response.data.weather[0].description);
@@ -116,7 +116,7 @@ function displayForecast(response) {
     forecastElement.innerHTML = forecastElement.innerHTML += `<div class="card">
                 <h6 class="card-title"> ${formatHours(forecast.dt * 1000)}</h6>
                 <div class="card-body">
-                    <img src="http://openweathermap.org/img/wn/${
+                    <img src="https://openweathermap.org/img/wn/${
                       forecast.weather[0].icon
                     }@2x.png" class="card-img-bottom"/>
                     <p class="card-text">
